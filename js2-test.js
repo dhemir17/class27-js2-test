@@ -12,7 +12,21 @@
 
     Expected output:
     'Noer is 28 and works as an Education Director'
+    
 */
+const person = { 
+    name: 'Noer',
+    age: 28,
+    jobTitle: 'Education Director'
+};
+function logObj(obj){
+    const name = obj.name;
+    const age = obj.age;
+    const jobTitle1 = obj.jobTitle;
+    return (`${obj.name} is ${obj.age} works as an ${obj.jobTitle}`);
+}
+
+console.log(logObj(person));
 
 /* 2. Create a function, named logNumbers, that:
       - Takes 2 arguments: a start number and an end number
@@ -38,6 +52,21 @@
 
       Use the following values: 1 (start number) and 100 (end number)
 */
+function numberCounter(num1, num2) {
+    
+    for (let i = num1; i < num2+1; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+        console.log('FizzBuzz'); }
+        else if (i % 3 === 0) {
+        console.log('Fizz');}
+        else if (i % 5 === 0) {
+        console.log('Buzz'); }
+       else 
+        console.log(i);
+      }
+    }
+
+  console.log(numberCounter(1,15));
 
 // JavaScript2
 
@@ -54,6 +83,16 @@
 
       Use the following array: const letters = ['a', 'b', 'c', 'd'];
 */
+
+function indexArr(arr){
+    const numArr = arr.map(function(item, index, array){
+        return index+1 ;
+    })
+    return numArr;
+}
+
+const letters = ['a', 'b', 'c', 'd'];
+console.log(indexArr(letters));
 
 /* 4. Create a function, called injectBooksToDOM, that:
       - Takes 1 argument: an array of objects
@@ -79,6 +118,39 @@
             }
       ];
 */
+
+const ul = document.createElement('ul');
+
+function injectBooksToDOM (objArr){
+    
+
+    objArr.forEach(element => {
+        const li = document.createElement('li');
+        li.innerHTML = `Book Name: ${element.bookName}<br>
+                        Author: ${element.author}<br>
+                        <img src=${element.coverURL} width = "200px">`;
+        ul.appendChild(li);
+
+        
+    });
+    return ul;
+}
+document.getElementById('root').appendChild(ul);
+const books = [
+    {
+          bookName: "The Nature of Software Development",
+          author: "Ron Jeffries",
+          coverURL:
+                "https://cdn-images-1.medium.com/max/1200/1*CQRh-pFTZ97ReXogbefleQ.png"
+    },
+    {
+          bookName: "Clean Code",
+          author: "Robert Cecil Martin",
+          coverURL:
+                "https://images-na.ssl-images-amazon.com/images/I/515iEcDr1GL._SX258_BO1,204,203,200_.jpg"
+    }
+];
+injectBooksToDOM(books);
 
 /*
 5. What's the output for this snippet? Is the output deterministic (always the same) or might it depend on the browser
