@@ -55,7 +55,7 @@ console.log(logObj(person));
 function numberCounter(num1, num2) {
     
     for (let i = num1; i < num2+1; i++) {
-        if (i % 3 === 0 && i % 5 === 0) {
+        if (i % 15 === 0) { 
         console.log('FizzBuzz'); }
         else if (i % 3 === 0) {
         console.log('Fizz');}
@@ -86,7 +86,7 @@ function numberCounter(num1, num2) {
 
 function indexArr(arr){
     const numArr = arr.map(function(item, index, array){
-        return index+1 ;
+        return index+1 ; //if expected output [0,1,2,3] then it will be "return index;"
     })
     return numArr;
 }
@@ -118,20 +118,14 @@ console.log(indexArr(letters));
             }
       ];
 */
-
 const ul = document.createElement('ul');
-
 function injectBooksToDOM (objArr){
-    
-
     objArr.forEach(element => {
         const li = document.createElement('li');
         li.innerHTML = `Book Name: ${element.bookName}<br>
                         Author: ${element.author}<br>
                         <img src=${element.coverURL} width = "200px">`;
-        ul.appendChild(li);
-
-        
+        ul.appendChild(li);     
     });
     return ul;
 }
@@ -160,14 +154,11 @@ the explanation why is the important part)
 
 function test() {
     console.log('one');
-    setTimeout(function() {
-        console.log('two');
-        setTimeout(function() {
-            console.log('three');
+    setTimeout(function() {console.log('two');
+        setTimeout(function() {console.log('three');
         }, 0);
     }, 1000);
-    setTimeout(function() {
-        console.log('four');
+    setTimeout(function() {console.log('four');
         setTimeout(function() {
             console.log('five');
         }, 1000);
@@ -175,4 +166,12 @@ function test() {
     console.log('six');
 }
 test(); // ?
+we defined function given name "test"
+We log to the console "one".
+Then we have two callback functions SetTimeout these functions will wait for 1 second.
+As a second it logs to the screen "six"
+As a third It logs 'four' because setTimeout function has '0' for timeout. there is a new call back function into that. It will come back later
+Fourth it logs 'two' because setTimeout function has '1000' for timeout. there is a new call back function into that. it will come later callback.
+As a fifth it logs 'three' because inner setTimeout function is 0.
+Sixth it logs 'five' because inner setTimeout function has '1000' for timeout.
 */
